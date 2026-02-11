@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pentru Bria ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+padding:0;
+font-family:'Great Vibes',cursive;
+background:black;
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* AURORA */
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle at 30% 20%, #4b0082, transparent 40%),
+radial-gradient(circle at 70% 40%, #ff00cc, transparent 40%),
+radial-gradient(circle at 50% 80%, #6a0dad, transparent 40%);
+animation:aurora 12s infinite alternate ease-in-out;
+z-index:-2;
+}
+@keyframes aurora{
+0%{filter:hue-rotate(0deg);}
+100%{filter:hue-rotate(40deg);}
+}
+
+/* STELE */
+body::after{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+opacity:0.4;
+animation:moveStars 120s linear infinite;
+z-index:-1;
+}
+@keyframes moveStars{
+from{background-position:0 0;}
+to{background-position:3000px 3000px;}
+}
+
+h1{
+margin-top:25px;
+font-size:32px;
+text-shadow:0 0 15px #ff66ff,0 0 40px #ff00cc;
+}
+
+.countdown{
+margin-top:10px;
+font-size:20px;
+text-shadow:0 0 10px #ff00cc;
+}
+
+.image-container{
+margin-top:20px;
+}
+.image-container img{
+width:85%;
+max-width:360px;
+border-radius:25px;
+box-shadow:0 0 40px #ff00cc;
+transition:0.3s;
+}
+.image-container img:active{
+transform:scale(1.05);
+}
+
+.music-btn{
+position:fixed;
+top:15px;
+right:15px;
+background:#ff00cc;
+border:none;
+padding:12px;
+border-radius:50%;
+color:white;
+font-size:18px;
+box-shadow:0 0 20px #ff00cc;
+}
+
+.quest{
+margin-top:35px;
+padding:20px;
+}
+.question{
+font-size:24px;
+min-height:70px;
+}
+.btn{
+padding:14px 28px;
+margin:10px;
+border:none;
+border-radius:30px;
+font-size:20px;
+font-family:'Great Vibes',cursive;
+background:#ff00cc;
+color:white;
+box-shadow:0 0 20px #ff00cc;
+}
+
+.heart{
+position:fixed;
+top:-10px;
+animation:fall linear forwards;
+}
+@keyframes fall{
+to{transform:translateY(110vh);opacity:0;}
+}
+
+.star{
+position:fixed;
+top:20%;
+left:-100px;
+font-size:20px;
+animation:shoot 5s linear infinite;
+}
+@keyframes shoot{
+0%{transform:translateX(0) translateY(0);}
+100%{transform:translateX(120vw) translateY(40vh);}
+}
+
+.final{
+font-size:60px;
+margin-top:40px;
+animation:zoomIn 3s forwards;
+}
+@keyframes zoomIn{
+from{transform:scale(0);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+.fade{
+animation:fade 3s forwards;
+}
+@keyframes fade{
+from{opacity:1;}
+to{opacity:0;}
+}
+
+/* SECRET MESSAGE */
+.secret-message{
+position:fixed;
+bottom:20%;
+left:50%;
+transform:translateX(-50%);
+font-size:32px;
+text-align:center;
+color:#ff66ff;
+text-shadow:0 0 15px #ff00cc,0 0 40px #ff00cc;
+animation:secretAppear 2s forwards;
+}
+@keyframes secretAppear{
+from{opacity:0;transform:translateX(-50%) scale(0);}
+to{opacity:1;transform:translateX(-50%) scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>Iubirea mea Bria, astăzi e despre noi 💖</h1>
+<div class="countdown" id="countdown"></div>
+
+<button class="music-btn" onclick="toggleMusic()" id="musicBtn">🎵</button>
+
+<div class="image-container">
+<img src="poza.jpg" id="loveImage" onclick="imageClick()">
+</div>
+
+<div class="quest">
+<div class="question" id="question">
+Ești pregătită pentru ceva magic?
+</div>
+<button class="btn" onclick="answer(true)">Da ❤️</button>
+<button class="btn" onclick="answer(false)">Nu 🙈</button>
+</div>
+
+<div class="star">🌠</div>
+
+<audio id="bgMusic" src="muzica.mp3"></audio>
+<audio id="clickSound" src="click.mp3"></audio>
+
+<script>
+
+const targetDate = "Feb 14, 2026 00:00:00";
+
+const questions=[
+"Crezi în suflete pereche?",
+"Simți că iubirea noastră e unică?",
+"Ai retrăi fiecare clipă?",
+"Vrei să scriem povestea noastră?",
+"Mă alegi pentru totdeauna?"
+];
+
+let current=0;
+let clickCount=0;
+
+/* COUNTDOWN */
+const count=document.getElementById("countdown");
+setInterval(()=>{
+let now=new Date().getTime();
+let distance=new Date(targetDate).getTime()-now;
+let d=Math.floor(distance/(1000*60*60*24));
+let h=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+count.innerHTML=`⏳ ${d} zile și ${h} ore până la Valentine's Day`;
+},1000);
+
+function toggleMusic(){
+let music=document.getElementById("bgMusic");
+let btn=document.getElementById("musicBtn");
+if(music.paused){
+music.play();
+btn.innerHTML="⏸️";
+}else{
+music.pause();
+btn.innerHTML="🎵";
+}
+}
+
+function answer(yes){
+document.getElementById("clickSound").play();
+if(navigator.vibrate){navigator.vibrate(100);}
+if(yes){confetti();}
+current++;
+if(current<questions.length){
+document.getElementById("question").innerText=questions[current];
+}else{
+finalScene();
+}
+}
+
+function confetti(){
+for(let i=0;i<40;i++){
+let c=document.createElement("div");
+c.innerHTML="💖";
+c.className="heart";
+c.style.left=Math.random()*100+"vw";
+c.style.fontSize=(Math.random()*25+15)+"px";
+c.style.animationDuration=(Math.random()*3+2)+"s";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),5000);
+}
+}
+
+setInterval(()=>{
+let h=document.createElement("div");
+h.innerHTML="💜";
+h.className="heart";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(Math.random()*20+10)+"px";
+h.style.animationDuration="6s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+},800);
+
+function finalScene(){
+document.body.classList.add("fade");
+setTimeout(()=>{
+document.body.innerHTML=`
+<div class="final">LOVE Bria 💍</div>
+<div style="font-size:28px;margin-top:20px;">
+Te aleg azi. Te aleg mâine. Te aleg pentru totdeauna.
+</div>
+`;
+confetti();
+},3000);
+}
+
+/* SECRET 3 CLICKS */
+function imageClick(){
+clickCount++;
+if(clickCount===3){
+if(navigator.vibrate){navigator.vibrate([100,50,100]);}
+let secret=document.createElement("div");
+secret.className="secret-message";
+secret.innerHTML="Te iubește al tău David ENORM 💖";
+document.body.appendChild(secret);
+confetti();
+setTimeout(()=>{
+secret.remove();
+clickCount=0;
+},6000);
+}
+}
+
+</script>
+
+</body>
+</html>
