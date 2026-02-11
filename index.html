@@ -4,171 +4,161 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pentru Bria ❤️</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
+
 body{
-margin:0;
-padding:0;
 font-family:'Great Vibes',cursive;
-background:black;
 color:white;
 text-align:center;
 overflow-x:hidden;
+background:black;
+touch-action:manipulation;
 }
 
-/* AURORA */
-body::before{
-content:"";
+/* FUNDAL DIN POZA TA */
+.background-blur{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url("poza.jpg") center/cover no-repeat;
+filter:blur(25px) brightness(0.4);
+z-index:-3;
+transform:scale(1.1);
+}
+
+/* OVERLAY ROMANTIC */
+.overlay{
 position:fixed;
 width:100%;
 height:100%;
-background:radial-gradient(circle at 30% 20%, #4b0082, transparent 40%),
-radial-gradient(circle at 70% 40%, #ff00cc, transparent 40%),
-radial-gradient(circle at 50% 80%, #6a0dad, transparent 40%);
-animation:aurora 12s infinite alternate ease-in-out;
+background:
+radial-gradient(circle at 30% 30%, rgba(255,0,150,0.3), transparent 60%),
+radial-gradient(circle at 70% 70%, rgba(128,0,255,0.3), transparent 60%);
 z-index:-2;
-}
-@keyframes aurora{
-0%{filter:hue-rotate(0deg);}
-100%{filter:hue-rotate(40deg);}
+animation:glowMove 8s infinite alternate ease-in-out;
 }
 
-/* STELE */
-body::after{
-content:"";
-position:fixed;
-width:100%;
-height:100%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-opacity:0.4;
-animation:moveStars 120s linear infinite;
-z-index:-1;
-}
-@keyframes moveStars{
-from{background-position:0 0;}
-to{background-position:3000px 3000px;}
+@keyframes glowMove{
+0%{filter:hue-rotate(0deg)}
+100%{filter:hue-rotate(40deg)}
 }
 
 h1{
 margin-top:25px;
-font-size:32px;
-text-shadow:0 0 15px #ff66ff,0 0 40px #ff00cc;
+font-size:28px;
+text-shadow:0 0 20px #ff00cc,0 0 40px #ff66ff;
+padding:0 15px;
 }
 
 .countdown{
+font-size:18px;
 margin-top:10px;
-font-size:20px;
 text-shadow:0 0 10px #ff00cc;
+padding:0 15px;
 }
 
-.image-container{
-margin-top:20px;
-}
 .image-container img{
 width:85%;
 max-width:360px;
 border-radius:25px;
-box-shadow:0 0 40px #ff00cc;
-transition:0.3s;
-}
-.image-container img:active{
-transform:scale(1.05);
+box-shadow:0 0 50px #ff00cc;
+margin-top:20px;
 }
 
+/* BUTON MUZICA */
 .music-btn{
 position:fixed;
 top:15px;
 right:15px;
-background:#ff00cc;
+background:linear-gradient(45deg,#ff00cc,#8000ff);
 border:none;
-padding:12px;
+padding:14px;
 border-radius:50%;
 color:white;
 font-size:18px;
 box-shadow:0 0 20px #ff00cc;
 }
 
+/* QUEST */
 .quest{
-margin-top:35px;
-padding:20px;
-}
-.question{
-font-size:24px;
-min-height:70px;
-}
-.btn{
-padding:14px 28px;
-margin:10px;
-border:none;
-border-radius:30px;
-font-size:20px;
-font-family:'Great Vibes',cursive;
-background:#ff00cc;
-color:white;
-box-shadow:0 0 20px #ff00cc;
+margin-top:30px;
+padding:15px;
 }
 
+.question{
+font-size:22px;
+min-height:70px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 24px;
+margin:8px;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-family:'Great Vibes',cursive;
+background:linear-gradient(45deg,#ff00cc,#8000ff);
+color:white;
+box-shadow:0 0 20px #ff00cc;
+position:relative;
+}
+
+.response{
+margin-top:10px;
+font-size:18px;
+min-height:30px;
+}
+
+.secret-btn{
+margin-top:25px;
+background:transparent;
+border:1px solid #ff66ff;
+color:#ff66ff;
+padding:8px 18px;
+border-radius:20px;
+font-size:16px;
+}
+
+.secret-section{
+margin-top:20px;
+font-size:22px;
+display:none;
+text-shadow:0 0 15px #ff00cc;
+}
+
+/* INIMI */
 .heart{
 position:fixed;
-top:-10px;
+pointer-events:none;
 animation:fall linear forwards;
 }
 @keyframes fall{
-to{transform:translateY(110vh);opacity:0;}
-}
-
-.star{
-position:fixed;
-top:20%;
-left:-100px;
-font-size:20px;
-animation:shoot 5s linear infinite;
-}
-@keyframes shoot{
-0%{transform:translateX(0) translateY(0);}
-100%{transform:translateX(120vw) translateY(40vh);}
+to{transform:translateY(110vh);opacity:0}
 }
 
 .final{
-font-size:60px;
+font-size:38px;
 margin-top:40px;
-animation:zoomIn 3s forwards;
+animation:zoom 2s forwards;
+text-shadow:0 0 30px #ff00cc;
 }
-@keyframes zoomIn{
-from{transform:scale(0);opacity:0;}
-to{transform:scale(1);opacity:1;}
-}
-
-.fade{
-animation:fade 3s forwards;
-}
-@keyframes fade{
-from{opacity:1;}
-to{opacity:0;}
-}
-
-/* SECRET MESSAGE */
-.secret-message{
-position:fixed;
-bottom:20%;
-left:50%;
-transform:translateX(-50%);
-font-size:32px;
-text-align:center;
-color:#ff66ff;
-text-shadow:0 0 15px #ff00cc,0 0 40px #ff00cc;
-animation:secretAppear 2s forwards;
-}
-@keyframes secretAppear{
-from{opacity:0;transform:translateX(-50%) scale(0);}
-to{opacity:1;transform:translateX(-50%) scale(1);}
+@keyframes zoom{
+from{transform:scale(0);opacity:0}
+to{transform:scale(1);opacity:1}
 }
 </style>
 </head>
 
 <body>
+
+<div class="background-blur"></div>
+<div class="overlay"></div>
 
 <h1>Iubirea mea Bria, astăzi e despre noi 💖</h1>
 <div class="countdown" id="countdown"></div>
@@ -176,75 +166,115 @@ to{opacity:1;transform:translateX(-50%) scale(1);}
 <button class="music-btn" onclick="toggleMusic()" id="musicBtn">🎵</button>
 
 <div class="image-container">
-<img src="poza.jpg" id="loveImage" onclick="imageClick()">
+<img src="poza.jpg">
 </div>
 
 <div class="quest">
 <div class="question" id="question">
-Ești pregătită pentru ceva magic?
-</div>
-<button class="btn" onclick="answer(true)">Da ❤️</button>
-<button class="btn" onclick="answer(false)">Nu 🙈</button>
+Ești pregătită pentru cel mai sincer test al iubirii?
 </div>
 
-<div class="star">🌠</div>
+<button class="btn" id="yesBtn" onclick="answerYes()">Da ❤️</button>
+<button class="btn" id="noBtn">Nu 🙈</button>
+
+<div class="response" id="response"></div>
+
+<button class="secret-btn" onclick="toggleSecret()">✨ Secret</button>
+<div class="secret-section" id="secretSection">
+Sper că înțelegi că ești absolut tot ce am!
+</div>
+</div>
 
 <audio id="bgMusic" src="muzica.mp3"></audio>
 <audio id="clickSound" src="click.mp3"></audio>
 
 <script>
 
-const targetDate = "Feb 14, 2026 00:00:00";
+/* COUNTDOWN */
+const countdown=document.getElementById("countdown");
+const target=new Date("Feb 14, 2026 00:00:00").getTime();
 
+setInterval(()=>{
+let now=new Date().getTime();
+let diff=target-now;
+
+if(diff<=0){explodeFinal();return;}
+
+let d=Math.floor(diff/(1000*60*60*24));
+let h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+let m=Math.floor((diff%(1000*60*60))/(1000*60));
+let s=Math.floor((diff%(1000*60))/1000);
+
+countdown.innerHTML=`⏳ ${d}z ${h}h ${m}m ${s}s până la Valentine's Day`;
+},1000);
+
+/* QUEST */
 const questions=[
 "Crezi în suflete pereche?",
+"Ai lupta pentru noi indiferent de obstacole?",
+"M-ai alege din nou în fiecare viață?",
 "Simți că iubirea noastră e unică?",
-"Ai retrăi fiecare clipă?",
-"Vrei să scriem povestea noastră?",
-"Mă alegi pentru totdeauna?"
+"Îți vezi viitorul doar cu mine?"
 ];
 
 let current=0;
-let clickCount=0;
+const funny=[
+"Știam eu 😌",
+"Răspuns corect!",
+"Nu aveai altă opțiune 😏",
+"Exact ce voiam să aud!"
+];
 
-/* COUNTDOWN */
-const count=document.getElementById("countdown");
-setInterval(()=>{
-let now=new Date().getTime();
-let distance=new Date(targetDate).getTime()-now;
-let d=Math.floor(distance/(1000*60*60*24));
-let h=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-count.innerHTML=`⏳ ${d} zile și ${h} ore până la Valentine's Day`;
-},1000);
-
-function toggleMusic(){
-let music=document.getElementById("bgMusic");
-let btn=document.getElementById("musicBtn");
-if(music.paused){
-music.play();
-btn.innerHTML="⏸️";
-}else{
-music.pause();
-btn.innerHTML="🎵";
-}
-}
-
-function answer(yes){
+function answerYes(){
 document.getElementById("clickSound").play();
-if(navigator.vibrate){navigator.vibrate(100);}
-if(yes){confetti();}
+document.getElementById("response").innerText=
+funny[Math.floor(Math.random()*funny.length)];
+
+burst();
 current++;
 if(current<questions.length){
 document.getElementById("question").innerText=questions[current];
 }else{
-finalScene();
+explodeFinal();
 }
 }
 
-function confetti(){
-for(let i=0;i<40;i++){
+/* BUTON NU */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("touchstart",moveNo);
+noBtn.addEventListener("mouseover",moveNo);
+function moveNo(){
+noBtn.style.position="absolute";
+noBtn.style.left=Math.random()*70+"%";
+noBtn.style.top=Math.random()*70+"%";
+}
+
+/* SECRET */
+function toggleSecret(){
+const s=document.getElementById("secretSection");
+s.style.display=s.style.display==="block"?"none":"block";
+}
+
+/* INIMI TAP */
+document.addEventListener("click",heart);
+document.addEventListener("touchstart",heart);
+
+function heart(e){
+let h=document.createElement("div");
+h.innerHTML="💖";
+h.className="heart";
+h.style.left=(e.touches?e.touches[0].clientX:e.clientX)+"px";
+h.style.top=(e.touches?e.touches[0].clientY:e.clientY)+"px";
+h.style.fontSize=(Math.random()*20+15)+"px";
+h.style.animationDuration="4s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),4000);
+}
+
+function burst(){
+for(let i=0;i<30;i++){
 let c=document.createElement("div");
-c.innerHTML="💖";
+c.innerHTML="💜";
 c.className="heart";
 c.style.left=Math.random()*100+"vw";
 c.style.fontSize=(Math.random()*25+15)+"px";
@@ -254,48 +284,31 @@ setTimeout(()=>c.remove(),5000);
 }
 }
 
-setInterval(()=>{
-let h=document.createElement("div");
-h.innerHTML="💜";
-h.className="heart";
-h.style.left=Math.random()*100+"vw";
-h.style.fontSize=(Math.random()*20+10)+"px";
-h.style.animationDuration="6s";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
-},800);
-
-function finalScene(){
-document.body.classList.add("fade");
-setTimeout(()=>{
-document.body.innerHTML=`
-<div class="final">LOVE Bria 💍</div>
-<div style="font-size:28px;margin-top:20px;">
-Te aleg azi. Te aleg mâine. Te aleg pentru totdeauna.
-</div>
-`;
-confetti();
-},3000);
+function explodeFinal(){
+document.getElementById("bgMusic").play();
+document.body.innerHTML=
+`<div class="background-blur"></div>
+<div class="overlay"></div>
+<div class="final">Te iubește al tău David ENORM 💖</div>`;
+for(let i=0;i<120;i++){
+let c=document.createElement("div");
+c.innerHTML="💖";
+c.className="heart";
+c.style.left=Math.random()*100+"vw";
+c.style.fontSize=(Math.random()*30+20)+"px";
+c.style.animationDuration=(Math.random()*4+2)+"s";
+document.body.appendChild(c);
+}
+if(navigator.vibrate){navigator.vibrate([200,100,200]);}
 }
 
-/* SECRET 3 CLICKS */
-function imageClick(){
-clickCount++;
-if(clickCount===3){
-if(navigator.vibrate){navigator.vibrate([100,50,100]);}
-let secret=document.createElement("div");
-secret.className="secret-message";
-secret.innerHTML="Te iubește al tău David ENORM 💖";
-document.body.appendChild(secret);
-confetti();
-setTimeout(()=>{
-secret.remove();
-clickCount=0;
-},6000);
+function toggleMusic(){
+let m=document.getElementById("bgMusic");
+let b=document.getElementById("musicBtn");
+if(m.paused){m.play();b.innerHTML="⏸️";}
+else{m.pause();b.innerHTML="🎵";}
 }
-}
-
 </script>
-
 </body>
 </html>
+
